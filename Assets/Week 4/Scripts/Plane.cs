@@ -10,7 +10,7 @@ public class Plane : MonoBehaviour
     LineRenderer lineR;
     Vector2 currentPos;
     Rigidbody2D rb;
-    public float speed = 1;
+    public float speed;
     public AnimationCurve landing;
     float landTimer;
 
@@ -21,6 +21,8 @@ public class Plane : MonoBehaviour
         lineR.SetPosition(0, transform.position);
 
         rb = GetComponent<Rigidbody2D>();
+
+        speed = Random.Range(1, 3);
     }
 
     private void FixedUpdate()
