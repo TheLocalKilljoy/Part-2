@@ -13,6 +13,8 @@ public class Knight : MonoBehaviour
     bool clickSelf = false;
     public float hp;
     public float maxHP = 5;
+    bool isDead = false;
+    public HealthBar healthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,7 @@ public class Knight : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(isDead) return;
         move = destination - (Vector2)transform.position;
         if(move.magnitude < 0.1 ) 
         {
@@ -35,6 +38,7 @@ public class Knight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isDead) return;
         if (Input.GetMouseButtonDown(0) && !clickSelf)
         {
             destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -44,26 +48,30 @@ public class Knight : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        if (isDead) return;
         clickSelf = true;
         takeDMG(1);
+        healthBar.takeDMG(1);
     }
 
     private void OnMouseUp()
     {
+        if (isDead) return;
         clickSelf = false;
     }
 
-    void takeDMG(float DMG)
+    public void takeDMG(float DMG)
     {
         hp -= DMG;
         hp = Mathf.Clamp(hp, 0, maxHP);
         if (hp == 0 )
         {
-            //die
+            isDead = true;
             animator.SetTrigger("death");
         }
         else
         {
+            isDead= false;
            animator.SetTrigger("Take DMG");
         }
 
