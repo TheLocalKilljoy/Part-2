@@ -14,7 +14,6 @@ public class Knight : MonoBehaviour
     public float hp;
     public float maxHP = 5;
     bool isDead = false;
-    public HealthBar healthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -50,8 +49,7 @@ public class Knight : MonoBehaviour
     {
         if (isDead) return;
         clickSelf = true;
-        takeDMG(1);
-        healthBar.takeDMG(1);
+        SendMessage("takeDMG", 1);
     }
 
     private void OnMouseUp()

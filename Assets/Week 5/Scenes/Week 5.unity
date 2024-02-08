@@ -1508,7 +1508,6 @@ MonoBehaviour:
   speed: 3
   hp: 0
   maxHP: 5
-  healthBar: {fileID: 4709178891254612229}
 --- !u!95 &4709178891254612228
 Animator:
   serializedVersion: 5
