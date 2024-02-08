@@ -44,6 +44,12 @@ public class Knight : MonoBehaviour
 
         }
         animator.SetFloat("Movement", move.magnitude);
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            clickSelf = true;
+            animator.SetTrigger("attack");
+        }
     }
     private void OnMouseDown()
     {
