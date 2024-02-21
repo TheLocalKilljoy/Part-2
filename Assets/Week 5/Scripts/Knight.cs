@@ -9,7 +9,7 @@ public class Knight : MonoBehaviour
     Vector2 move;
     public float speed = 3;
     Rigidbody2D rb;
-    Animator animator;
+    public Animator animator;
     bool clickSelf = false;
     public float hp;
     public float maxHP = 5;
