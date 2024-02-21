@@ -43,13 +43,14 @@ public class Player : MonoBehaviour
         {
             animate.SetBool("Right", true);
             animate.SetBool("Left", false);
+
         }
         else if (end.x < rb.position.x)
         {
             animate.SetBool("Left", true);
             animate.SetBool("Right", false);
         }
-        if (end.x == rb.position.x)
+        else
         {
             animate.SetBool("Left", false);
             animate.SetBool("Right", false);
